@@ -1,6 +1,7 @@
 package sekarre.com.productservice.query;
 
 import lombok.RequiredArgsConstructor;
+import org.axonframework.config.ProcessingGroup;
 import org.axonframework.queryhandling.QueryHandler;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Component;
@@ -13,6 +14,7 @@ import java.util.List;
 
 @RequiredArgsConstructor
 @Component
+@ProcessingGroup("product-group")
 public class ProductsQueryHandler {
 
     private final ProductRepository productRepository;
