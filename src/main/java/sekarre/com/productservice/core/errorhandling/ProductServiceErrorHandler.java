@@ -1,5 +1,6 @@
 package sekarre.com.productservice.core.errorhandling;
 
+import org.axonframework.commandhandling.CommandExecutionException;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -14,6 +15,14 @@ public class ProductServiceErrorHandler {
 
     @ExceptionHandler(IllegalStateException.class)
     public ResponseEntity<ErrorMessage> handleIllegalStateException(IllegalStateException ex) {
+
+        ErrorMessage errorMessage = new ErrorMessage(Timestamp.valueOf(LocalDateTime.now()), ex.getMessage());
+
+        return new ResponseEntity<>(errorMessage, new HttpHeaders(), HttpStatus.INTERNAL_SERVER_ERROR);
+    }
+
+    @ExceptionHandler(CommandExecutionException.class)
+    public ResponseEntity<ErrorMessage> handleCommandExecutionException(CommandExecutionException ex) {
 
         ErrorMessage errorMessage = new ErrorMessage(Timestamp.valueOf(LocalDateTime.now()), ex.getMessage());
 
