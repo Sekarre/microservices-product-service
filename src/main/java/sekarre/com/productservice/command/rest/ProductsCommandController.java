@@ -5,8 +5,8 @@ import org.axonframework.commandhandling.gateway.CommandGateway;
 import org.springframework.core.env.Environment;
 import org.springframework.web.bind.annotation.*;
 import sekarre.com.productservice.command.CreateProductCommand;
-import sekarre.com.productservice.rest.CreateProductRestModel;
 
+import javax.validation.Valid;
 import java.util.UUID;
 
 @RequiredArgsConstructor
@@ -18,7 +18,7 @@ public class ProductsCommandController {
     private final CommandGateway commandGateway;
 
     @PostMapping
-    public String createProduct(@RequestBody CreateProductRestModel product) {
+    public String createProduct(@RequestBody @Valid CreateProductRestModel product) {
 
         CreateProductCommand createProductCommand = CreateProductCommand.builder()
                 .price(product.getPrice())
