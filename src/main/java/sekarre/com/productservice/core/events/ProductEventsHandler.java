@@ -1,4 +1,4 @@
-package sekarre.com.productservice.query;
+package sekarre.com.productservice.core.events;
 
 import lombok.RequiredArgsConstructor;
 import org.axonframework.eventhandling.EventHandler;

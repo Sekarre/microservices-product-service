@@ -10,7 +10,7 @@ import java.math.BigDecimal;
 @Data
 public class CreateProductRestModel {
 
-    @NotBlank(message = "Product title is required field")
+//    @NotBlank(message = "Product title is required field")
     private String title;
 
     @Min(value = 1, message = "Price cannot be lower than 1")
