@@ -6,6 +6,7 @@ import org.axonframework.eventhandling.EventHandler;
 import org.axonframework.messaging.interceptors.ExceptionHandler;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Component;
+import sekarre.com.core.events.ProductReservedEvent;
 import sekarre.com.productservice.core.data.ProductEntity;
 import sekarre.com.productservice.core.data.ProductRepository;
 
@@ -36,4 +37,13 @@ public class ProductEventsHandler {
         productRepository.save(productEntity);
     }
 
+
+    @EventHandler
+    public void on(ProductReservedEvent productReservedEvent) {
+        ProductEntity product = productRepository.findByProductId(productReservedEvent.getProductId());
+
+        product.setQuantity(product.getQuantity() - productReservedEvent.getQuantity());
+
+        productRepository.save(product);
+    }
 }

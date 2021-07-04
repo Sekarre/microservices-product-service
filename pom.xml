@@ -38,6 +38,11 @@
             <optional>true</optional>
         </dependency>
         <dependency>
+            <groupId>sekarre.com</groupId>
+            <artifactId>core</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
+        <dependency>
             <groupId>org.axonframework</groupId>
             <artifactId>axon-spring-boot-starter</artifactId>
             <version>4.4.7</version>
